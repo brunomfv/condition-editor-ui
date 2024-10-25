@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"homepage": "https://brunomfv.github.io/condition-editor-ui",
 	"author": {
 		"name": "Bruno Vilaça",
 		"email": "brunomfv@gmail.com"
