@@ -54,12 +54,17 @@ const compare = (propType: PropertyType, operatorType: OperatorType, a: Operand,
 };
 
 const getProductFilter = (property: Property, operatorId: OperatorType, value?: string | string[]) => {
-	return (product: Product) =>
-		product.property_values.find(propertyValue => {
+	return (product: Product) => {
+		if (operatorId === OperatorType.HasNoValue) {
+			return !product.property_values.find(propertyValue => propertyValue.property_id === property.id);
+			
+		}
+
+		return product.property_values.find(propertyValue => {
 			const compareTo: Operand = String(propertyValue.value);
 
 			return propertyValue.property_id === property.id && compare(property.type, operatorId, compareTo, value);
-		});
+		})};
 };
 
 export const getProducts = (operatorId: OperatorType, property?: Property, value?: string | string[]) => {
